@@ -11,10 +11,10 @@ GitHub Events:
 
 ## Required Environment Variables
 
-| Key             | Description                          |
-| ----------------|--------------------------------------|
-| `APP_NAME`      | Developer or App Name                |
-| `WAIT_MS`       | Wait until sending the comment       |
-| `COMMENT`       | Comment to send                      |
-| `PAYLOAD`       | gh webhook pull request synchronize  |
-| `TOKEN`         | jwt token to do api calls            |
+| Key             | Description                                               |
+| ----------------|-----------------------------------------------------------|
+| `APP_NAME`      | Developer or App Name                                     |
+| `WAIT_MS`       | Wait until sending the comment (default: 120000)          |
+| `COMMENT`       | Comment to send                                           |
+| `PAYLOAD`       | gh webhook pull request synchronize                       |
+| `TOKEN`         | jwt token to do api calls                                 |
