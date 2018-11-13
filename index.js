@@ -14,24 +14,25 @@ const addComment = (url, body, token) => requestp({
   }
 })
 
-const payload = JSON.parse(process.env.PAYLOAD)
-if (typeof payload === 'undefined') {
-  console.error('No payload defined!')
+const commentsURL = process.env.COMMENTS_URL
+if (typeof commentsURL === 'undefined') {
+  console.error('No comments_url defined!')
 } else {
-  if (payload.action === 'synchronize') {
-    console.log('Accepted Request: synchronize')
-    if (typeof process.env.TOKEN === 'undefined') {
-      console.error('No token defined! Abort.')
-    } else {
-      const timeToWait = process.env.WAIT_MS || 120000 // 2 minutes
-      console.log(`waiting before doing a PR comment for ${timeToWait} ms.`)
-      setTimeout(() => {
-        console.log('now doing a PR comment')
-        addComment(payload.pull_request.comments_url, process.env.COMMENT, process.env.TOKEN)
-      }, timeToWait)
-    }
+  if (typeof process.env.TOKEN === 'undefined') {
+    console.error('No token defined! Abort.')
   } else {
-    console.log('Not a "synchronize" event')
+    const timeToWait = process.env.WAIT_MS || 120000 // 2 minutes
+    console.log(`waiting before doing a comment for ${timeToWait} ms.`)
+    setTimeout(() => {
+      console.log('now doing a comment')
+      addComment(commentsURL, process.env.COMMENT, process.env.TOKEN)
+        .then((response) => {
+          console.log('Response: ' + response)
+          return response
+        }).catch((error) => {
+          console.error(error)
+        })
+    }, timeToWait)
   }
 }
 
