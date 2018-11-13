@@ -14,7 +14,7 @@ const addComment = (url, body, token) => requestp({
   }
 })
 
-const payload = process.env.PAYLOAD
+const payload = JSON.parse(process.env.PAYLOAD)
 if (typeof payload === 'undefined') {
   console.error('No payload defined!')
 } else {
