@@ -30,6 +30,8 @@ if (typeof payload === 'undefined') {
         addComment(payload.pull_request.comments_url, process.env.COMMENT, process.env.TOKEN)
       }, timeToWait)
     }
+  } else {
+    console.log('Not a "synchronize" event')
   }
 }
 
