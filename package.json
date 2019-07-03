@@ -5,10 +5,14 @@
   "license": "UNLICENSE",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "request": "2.88.0",
-    "request-promise": "4.2.2"
-  }
+    "request-promise": "4.2.2",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
