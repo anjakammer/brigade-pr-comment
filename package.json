@@ -9,6 +9,6 @@
   },
   "dependencies": {
     "request": "2.88.0",
-    "request-promise": "4.2.2"
+    "request-promise": "4.2.6"
   }
 }
